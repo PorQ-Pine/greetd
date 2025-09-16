@@ -182,7 +182,8 @@ fn worker(sock: &UnixDatagram) -> Result<(), Error> {
             target_term.kd_setmode(terminal::KdMode::Text)?;
 
             // Clear TTY so that it will be empty when we switch to it.
-            target_term.term_clear()?;
+            // Makes screen not go black on pinenote
+            // target_term.term_clear()?;
 
             // A bit more work if a VT switch is required.
             if switch && vt != target_term.vt_get_current()? {
